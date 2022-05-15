@@ -40,21 +40,21 @@ struct LoginPage: View {
                         hint: "123456",
                         value: $loginData.password,
                         showPassword: $loginData.showPassword)
-                        .padding(.top, 30)
+                        .padding(.top, 20)
                     
                     if loginData.registerUser {
                         CustomTextField(
-                            icon: "envelope",
+                            icon: "lock",
                             title: "Re-Enter Password",
                             hint: "123456",
                             value: $loginData.reEnterPassword,
                             showPassword: $loginData.showReEnterPassword)
-                            .padding(.top, 30)
+                            .padding(.top, 20)
                     }
                     
                     // Forgot Password Button...
                     Button {
-                        
+                        loginData.forgotPassword()
                     } label: {
                         Text("Forgot password?")
                             .font(.system(size: 14))
@@ -63,6 +63,37 @@ struct LoginPage: View {
                     }
                     .padding(.top, 8)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Button {
+                        if loginData.registerUser {
+                            loginData.register()
+                        } else {
+                            loginData.login()
+                        }
+                    } label: {
+                        Text("Login")
+                            .font(.system(size: 17)).bold()
+                            .padding(.vertical, 20)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .background(.purple)
+                            .cornerRadius(15)
+                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 5, y: 5)
+                    }
+                    .padding(.top, 20)
+                    .padding(.horizontal)
+                    
+                    Button {
+                        withAnimation {
+                            loginData.registerUser.toggle()
+                        }
+                    } label: {
+                        Text("Create account")
+                            .font(.system(size: 14))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.purple)
+                    }
+                    .padding(.top, 8)
                 }
                 .padding()
             }
