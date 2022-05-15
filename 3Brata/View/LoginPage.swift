@@ -11,7 +11,6 @@ struct LoginPage: View {
     @StateObject var loginData = LoginPageModel()
     var body: some View {
         VStack {
-            
             Text("Welcome\nback")
                 .font(.system(size: 55))
                 .foregroundColor(.white)
@@ -22,10 +21,10 @@ struct LoginPage: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 15) {
-                    Text("Login")
+                    Text(loginData.registerUser ? "Register" : "Login")
                         .font(.system(size: 22)).bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
-               
+                    
                     CustomTextField(
                         icon: "envelope",
                         title: "Email",
@@ -71,7 +70,7 @@ struct LoginPage: View {
                             loginData.login()
                         }
                     } label: {
-                        Text("Login")
+                        Text(loginData.registerUser ? "Register" : "Login")
                             .font(.system(size: 17)).bold()
                             .padding(.vertical, 20)
                             .frame(maxWidth: .infinity)
@@ -88,7 +87,7 @@ struct LoginPage: View {
                             loginData.registerUser.toggle()
                         }
                     } label: {
-                        Text("Create account")
+                        Text(loginData.registerUser ? "Back To Login" : "Create account")
                             .font(.system(size: 14))
                             .fontWeight(.semibold)
                             .foregroundColor(.purple)
@@ -106,6 +105,13 @@ struct LoginPage: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
+        .onChange(of: loginData.registerUser) { newValue in
+            loginData.email = ""
+            loginData.password = ""
+            loginData.reEnterPassword = ""
+            loginData.showPassword = false
+            loginData.showReEnterPassword = false
+        }
     }
 }
 

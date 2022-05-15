@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct OnBoardingPage: View {
+    @State private var showLoginPage = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
             
-//            Image("3brata_image")
-//                .resizable()
-//                .frame(width: 400, height: 400)
             VStack(alignment: .leading) {
-            Text("3 Brata")
-                .font(.system(size: 55))
-                .foregroundColor(.white)
-                .bold()
+                Text("3 Brata")
+                    .font(.system(size: 55))
+                    .foregroundColor(.white)
+                    .bold()
                 
-            
-            Image(systemName: "person.circle")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(.white)
-                .padding()
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.white)
+                    .padding()
             }
             .padding()
             
             Spacer()
             
             Button {
-                
+                withAnimation {
+                    showLoginPage = true
+                }
             } label: {
                 Text("Get Started")
                     .font(.body)
@@ -48,6 +48,14 @@ struct OnBoardingPage: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
+        .overlay(
+            Group {
+                if showLoginPage {
+                    LoginPage()
+                        .transition(.move(edge: .bottom))
+                }
+            }
+        )
     }
 }
 
