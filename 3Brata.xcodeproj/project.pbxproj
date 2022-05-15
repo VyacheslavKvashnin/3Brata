@@ -19,6 +19,7 @@
 		BD1BF7B128316D530097999D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BD1BF7B028316D530097999D /* FirebaseStorage */; };
 		BD1BF7B328316D530097999D /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BD1BF7B228316D530097999D /* FirebaseStorageCombine-Community */; };
 		BD1BF7B528316D530097999D /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = BD1BF7B428316D530097999D /* FirebaseStorageSwift-Beta */; };
+		BD1BF7B828317F7A0097999D /* VerifyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1BF7B728317F7A0097999D /* VerifyCode.swift */; };
 		BD5BBF58282FBDEF0070A789 /* _BrataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF57282FBDEF0070A789 /* _BrataApp.swift */; };
 		BD5BBF5A282FBDEF0070A789 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF59282FBDEF0070A789 /* ContentView.swift */; };
 		BD5BBF5C282FBDF00070A789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5BBF5B282FBDF00070A789 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		BD1BF79C28310EF30097999D /* CustomButtonForLoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonForLoginPage.swift; sourceTree = "<group>"; };
 		BD1BF79E28316B0E0097999D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD1BF7B628316DD60097999D /* -Brata-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-Brata-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BD1BF7B728317F7A0097999D /* VerifyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCode.swift; sourceTree = "<group>"; };
 		BD5BBF54282FBDEF0070A789 /* 3Brata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3Brata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5BBF57282FBDEF0070A789 /* _BrataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _BrataApp.swift; sourceTree = "<group>"; };
 		BD5BBF59282FBDEF0070A789 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				BD5BBF69282FC19C0070A789 /* OnBoardingPage.swift */,
+				BD1BF7B728317F7A0097999D /* VerifyCode.swift */,
 				BD5BBF6D282FF03B0070A789 /* LoginPage.swift */,
 				BD5BBF6F282FF2E90070A789 /* CustomCorners.swift */,
 				BD1BF79C28310EF30097999D /* CustomButtonForLoginPage.swift */,
@@ -231,6 +234,7 @@
 				BD5BBF722830D2E20070A789 /* CustomTextField.swift in Sources */,
 				BD5BBF5A282FBDEF0070A789 /* ContentView.swift in Sources */,
 				BD5BBF70282FF2E90070A789 /* CustomCorners.swift in Sources */,
+				BD1BF7B828317F7A0097999D /* VerifyCode.swift in Sources */,
 				BD5BBF6A282FC19C0070A789 /* OnBoardingPage.swift in Sources */,
 				BD5BBF6C282FF0210070A789 /* LoginPageModel.swift in Sources */,
 				BD1BF79D28310EF30097999D /* CustomButtonForLoginPage.swift in Sources */,
