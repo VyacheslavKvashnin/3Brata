@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginPage: View {
     @StateObject var loginData = LoginPageModel()
     var body: some View {
         VStack {
-            Text("Welcome\nback")
+            Text("Enter Your\nPhone Number")
                 .font(.system(size: 55))
                 .foregroundColor(.white)
                 .bold()
@@ -21,47 +22,13 @@ struct LoginPage: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 15) {
-                    Text(loginData.registerUser ? "Register" : "Login")
-                        .font(.system(size: 22)).bold()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
                     CustomTextField(
-                        icon: "envelope",
-                        title: "Email",
-                        hint: "mail@mail.com",
+                        icon: "phone",
+                        title: "Enter phone number",
+                        hint: "+7900123456",
                         value: $loginData.email,
                         showPassword: $loginData.showPassword)
                         .padding(.top, 30)
-                    
-                    CustomTextField(
-                        icon: "lock",
-                        title: "Password",
-                        hint: "123456",
-                        value: $loginData.password,
-                        showPassword: $loginData.showPassword)
-                        .padding(.top, 20)
-                    
-                    if loginData.registerUser {
-                        CustomTextField(
-                            icon: "lock",
-                            title: "Re-Enter Password",
-                            hint: "123456",
-                            value: $loginData.reEnterPassword,
-                            showPassword: $loginData.showReEnterPassword)
-                            .padding(.top, 20)
-                    }
-                    
-                    // Forgot Password Button...
-                    Button {
-                        loginData.forgotPassword()
-                    } label: {
-                        Text("Forgot password?")
-                            .font(.system(size: 14))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.purple)
-                    }
-                    .padding(.top, 8)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Button {
                         if loginData.registerUser {
@@ -70,7 +37,7 @@ struct LoginPage: View {
                             loginData.login()
                         }
                     } label: {
-                        Text(loginData.registerUser ? "Register" : "Login")
+                        Text("Next")
                             .font(.system(size: 17)).bold()
                             .padding(.vertical, 20)
                             .frame(maxWidth: .infinity)
@@ -81,18 +48,6 @@ struct LoginPage: View {
                     }
                     .padding(.top, 20)
                     .padding(.horizontal)
-                    
-                    Button {
-                        withAnimation {
-                            loginData.registerUser.toggle()
-                        }
-                    } label: {
-                        Text(loginData.registerUser ? "Back To Login" : "Create account")
-                            .font(.system(size: 14))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.purple)
-                    }
-                    .padding(.top, 8)
                 }
                 .padding()
             }
@@ -105,13 +60,6 @@ struct LoginPage: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
-        .onChange(of: loginData.registerUser) { newValue in
-            loginData.email = ""
-            loginData.password = ""
-            loginData.reEnterPassword = ""
-            loginData.showPassword = false
-            loginData.showReEnterPassword = false
-        }
     }
 }
 

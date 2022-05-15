@@ -13,14 +13,8 @@ struct OnBoardingPage: View {
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
-            
             VStack(alignment: .leading) {
-                Text("3 Brata")
-                    .font(.system(size: 55))
-                    .foregroundColor(.white)
-                    .bold()
-                
-                Image(systemName: "person.circle")
+                Image("3brata_image")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(.white)
