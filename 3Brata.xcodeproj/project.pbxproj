@@ -12,6 +12,10 @@
 		BD5BBF5C282FBDF00070A789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5BBF5B282FBDF00070A789 /* Assets.xcassets */; };
 		BD5BBF5F282FBDF00070A789 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5BBF5E282FBDF00070A789 /* Preview Assets.xcassets */; };
 		BD5BBF6A282FC19C0070A789 /* OnBoardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF69282FC19C0070A789 /* OnBoardingPage.swift */; };
+		BD5BBF6C282FF0210070A789 /* LoginPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF6B282FF0210070A789 /* LoginPageModel.swift */; };
+		BD5BBF6E282FF03B0070A789 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF6D282FF03B0070A789 /* LoginPage.swift */; };
+		BD5BBF70282FF2E90070A789 /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF6F282FF2E90070A789 /* CustomCorners.swift */; };
+		BD5BBF722830D2E20070A789 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF712830D2E20070A789 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,10 @@
 		BD5BBF5B282FBDF00070A789 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5BBF5E282FBDF00070A789 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BD5BBF69282FC19C0070A789 /* OnBoardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPage.swift; sourceTree = "<group>"; };
+		BD5BBF6B282FF0210070A789 /* LoginPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageModel.swift; sourceTree = "<group>"; };
+		BD5BBF6D282FF03B0070A789 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		BD5BBF6F282FF2E90070A789 /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
+		BD5BBF712830D2E20070A789 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				BD5BBF69282FC19C0070A789 /* OnBoardingPage.swift */,
+				BD5BBF6D282FF03B0070A789 /* LoginPage.swift */,
+				BD5BBF6F282FF2E90070A789 /* CustomCorners.swift */,
+				BD5BBF712830D2E20070A789 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,6 +101,7 @@
 		BD5BBF67282FBE3E0070A789 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BD5BBF6B282FF0210070A789 /* LoginPageModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,8 +184,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5BBF722830D2E20070A789 /* CustomTextField.swift in Sources */,
 				BD5BBF5A282FBDEF0070A789 /* ContentView.swift in Sources */,
+				BD5BBF70282FF2E90070A789 /* CustomCorners.swift in Sources */,
 				BD5BBF6A282FC19C0070A789 /* OnBoardingPage.swift in Sources */,
+				BD5BBF6C282FF0210070A789 /* LoginPageModel.swift in Sources */,
+				BD5BBF6E282FF03B0070A789 /* LoginPage.swift in Sources */,
 				BD5BBF58282FBDEF0070A789 /* _BrataApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,12 +9,26 @@ import SwiftUI
 
 struct OnBoardingPage: View {
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Spacer()
             
-            Image("3brata_image")
+//            Image("3brata_image")
+//                .resizable()
+//                .frame(width: 400, height: 400)
+            VStack(alignment: .leading) {
+            Text("3 Brata")
+                .font(.system(size: 55))
+                .foregroundColor(.white)
+                .bold()
+                
+            
+            Image(systemName: "person.circle")
                 .resizable()
-                .frame(width: 400, height: 400)
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(.white)
+                .padding()
+            }
+            .padding()
             
             Spacer()
             
@@ -22,7 +36,7 @@ struct OnBoardingPage: View {
                 
             } label: {
                 Text("Get Started")
-                    .font(.largeTitle)
+                    .font(.body)
                     .padding(.vertical, 15)
                     .frame(maxWidth: .infinity)
                     .background(.white)
@@ -33,12 +47,18 @@ struct OnBoardingPage: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.black)
+        .background(.purple)
     }
 }
 
 struct OnBoardingPage_Previews: PreviewProvider {
     static var previews: some View {
         OnBoardingPage()
+    }
+}
+
+extension View {
+    func getRect() -> CGRect {
+        return UIScreen.main.bounds
     }
 }
