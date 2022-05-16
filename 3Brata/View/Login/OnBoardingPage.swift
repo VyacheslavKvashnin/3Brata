@@ -16,6 +16,7 @@ struct OnBoardingPage: View {
             VStack(alignment: .leading) {
                 Image("3brata_image")
                     .resizable()
+                    .clipShape(Circle())
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(.white)
                     .padding()

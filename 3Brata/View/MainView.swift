@@ -11,6 +11,33 @@ import Firebase
 struct MainView: View {
     var body: some View {
         VStack {
+            
+            TabView {
+                Text("Menu")
+                .tabItem {
+                    Image(systemName: "sleep.circle")
+                    Text("Menu")
+                }
+
+                ProfileView()
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("Profile")
+                    }
+
+                ContactsView()
+                    .tabItem {
+                        Image(systemName: "phone")
+                        Text("Contacts")
+                    }
+
+                CartView()
+                    .tabItem {
+                        Image(systemName: "cart")
+                        Text("Cart")
+                    }
+            }
+            
             Text("Main")
             
             Button {
