@@ -12,57 +12,56 @@ struct LoginPage: View {
     @StateObject var loginData = LoginPageModel()
     @State private var showVerify = false
     
+    @State private var no = ""
+    
     @State private var messageError = ""
     @State private var showAlert = false
-    @State private var id = ""
+    @State private var ID = ""
+    
+    @State private var isEnabledButton = false
     
     var body: some View {
         
         NavigationView {
             VStack {
                 Text("Enter Your\nPhone Number")
-                    .font(.system(size: 55))
-                    .foregroundColor(.white)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .frame(height: getRect().height / 3.5)
-                    .padding()
+                    .titleStyle()
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 15) {
-                        CustomTextField(
-                            icon: "phone",
-                            title: "Enter phone number",
-                            hint: "+7900123456",
-                            value: $loginData.email)
+                        
+                        CustomTextField(icon: "phone", title: "Phone number", hint: "Enter phone number", value: $no)
                             .padding(.top, 30)
                         
-                        NavigationLink(destination: VerifyCode(showVerify: $showVerify, id: $id), isActive: $showVerify) {
+                        NavigationLink(destination: VerifyCode(showVerify: $showVerify, ID: $ID), isActive: $showVerify) {
                             Button {
-                                showVerify.toggle()
-                                PhoneAuthProvider.provider().verifyPhoneNumber("+"+loginData.email, uiDelegate: nil) { (id, error) in
+                                loginData.isEnabledButton = true
+                                PhoneAuthProvider.provider().verifyPhoneNumber("+"+no, uiDelegate: nil) { (id, error) in
                                     if error != nil {
                                         messageError = error!.localizedDescription
                                         showAlert.toggle()
                                         return
                                     }
-                                    self.id = id ?? ""
-                                    
+                                    self.ID = id ?? ""
+                                    showVerify.toggle()
+                                    loginData.isEnabledButton.toggle()
                                 }
                             } label: {
                                 Text("Next")
-                                    .font(.system(size: 17)).bold()
-                                    .padding(.vertical, 20)
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(.white)
-                                    .background(.purple)
-                                    .cornerRadius(15)
-                                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .nextButtonStyle(isEnabledButton: loginData.isEnabledButton)
                             }
                             .padding(.top, 20)
                             .padding(.horizontal)
+                            
                         }
-                       
+                        .disabled(loginData.isEnabledButton ? true : false)
+                        .alert("Error", isPresented: $showAlert) {
+                            Button {
+                                loginData.isEnabledButton.toggle()
+                            } label: {
+                                Text("OK")
+                            }
+                        }
                     }
                     .padding()
                 }
@@ -74,7 +73,7 @@ struct LoginPage: View {
                 )
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.purple)
+            .background(.purple)
         }
     }
 }

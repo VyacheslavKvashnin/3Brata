@@ -8,23 +8,6 @@
 import SwiftUI
 
 class LoginPageModel: ObservableObject {
-  
     @Published var email = ""
-    @Published var password = ""
-    
-    @Published var registerUser = false
-    @Published var reEnterPassword = ""
-    @Published var showReEnterPassword = false
-    
-    func login() {
-        
-    }
-    
-    func register() {
-        
-    }
-    
-    func forgotPassword() {
-        
-    }
+    @Published var isEnabledButton = false
 }

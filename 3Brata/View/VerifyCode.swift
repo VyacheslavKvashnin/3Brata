@@ -11,7 +11,7 @@ import Firebase
 struct VerifyCode: View {
     @StateObject var loginData = LoginPageModel()
     @Binding var showVerify: Bool
-    @Binding var id: String
+    @Binding var ID: String
     
     @State private var code = ""
     @State private var messageError = ""
@@ -20,24 +20,15 @@ struct VerifyCode: View {
     var body: some View {
         VStack {
             Text("Enter Code")
-                .font(.system(size: 55))
-                .foregroundColor(.white)
-                .bold()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: getRect().height / 3.5)
-                .padding()
+                .titleStyle()
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 15) {
-                    CustomTextField(
-                        icon: "phone",
-                        title: "Enter code",
-                        hint: "Enter code",
-                        value: $loginData.email)
-                        .padding(.top, 30)
+                    CustomTextField(icon: "barcode", title: "Enter code", hint: "Enter code", value: $code)
                     
                     Button {
-                        let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
+                        loginData.isEnabledButton = true
+                        let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID, verificationCode: code)
                         
                         Auth.auth().signIn(with: credential) { response, error in
                             if error != nil {
@@ -48,21 +39,18 @@ struct VerifyCode: View {
                             UserDefaults.standard.set(true, forKey: "status")
                             NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
                         }
-                       
                     } label: {
                         Text("Next")
-                            .font(.system(size: 17)).bold()
-                            .padding(.vertical, 20)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(.white)
-                            .background(.purple)
-                            .cornerRadius(15)
-                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 5, y: 5)
+                            .nextButtonStyle(isEnabledButton: loginData.isEnabledButton)
+                            
                     }
                     .padding(.top, 20)
                     .padding(.horizontal)
                 }
                 .padding()
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Error"), message: Text(messageError), dismissButton: .default(Text("OK")))
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
@@ -78,6 +66,6 @@ struct VerifyCode: View {
 
 struct VerifyCode_Previews: PreviewProvider {
     static var previews: some View {
-        VerifyCode(showVerify: .constant(.random()), id: .constant(""))
+        VerifyCode(showVerify: .constant(.random()), ID: .constant(""))
     }
 }

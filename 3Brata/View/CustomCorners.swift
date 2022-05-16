@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomCorners: Shape {
-   
     var corners: UIRectCorner
     var radius: CGFloat
     
@@ -17,7 +16,6 @@ struct CustomCorners: Shape {
             roundedRect: rect,
             byRoundingCorners: corners,
             cornerRadii: CGSize(width: radius, height: radius))
-        
         return Path(path.cgPath)
     }
 }

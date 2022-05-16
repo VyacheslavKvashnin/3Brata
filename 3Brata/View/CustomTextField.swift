@@ -7,12 +7,7 @@
 
 import SwiftUI
 
-func CustomTextField(
-    icon: String,
-    title: String,
-    hint: String,
-    value: Binding<String>
-) -> some View {
+func CustomTextField(icon: String, title: String, hint: String, value: Binding<String>) -> some View {
     VStack(alignment: .leading, spacing: 12) {
         Label {
             Text(title)
@@ -22,12 +17,7 @@ func CustomTextField(
         }
         .foregroundColor(Color.black.opacity(0.8))
         
-        if title.contains("Password") {
-            SecureField(hint, text: value)
-        }
-        else {
-            TextField(hint, text: value)
-        }
+        TextField(hint, text: value)
         
         Divider()
     }

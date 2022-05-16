@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD1BF79D28310EF30097999D /* CustomButtonForLoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1BF79C28310EF30097999D /* CustomButtonForLoginPage.swift */; };
 		BD1BF79F28316B0E0097999D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD1BF79E28316B0E0097999D /* GoogleService-Info.plist */; };
 		BD1BF7A328316D530097999D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD1BF7A228316D530097999D /* FirebaseAuth */; };
 		BD1BF7A528316D530097999D /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BD1BF7A428316D530097999D /* FirebaseAuthCombine-Community */; };
@@ -30,10 +29,11 @@
 		BD5BBF70282FF2E90070A789 /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF6F282FF2E90070A789 /* CustomCorners.swift */; };
 		BD5BBF722830D2E20070A789 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBF712830D2E20070A789 /* CustomTextField.swift */; };
 		BDAB057828326A5C00C45266 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAB057728326A5C00C45266 /* MainView.swift */; };
+		BDAB057A2832AC6C00C45266 /* TitleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAB05792832AC6C00C45266 /* TitleStyle.swift */; };
+		BDAB057C2832B04000C45266 /* NextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAB057B2832B04000C45266 /* NextButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD1BF79C28310EF30097999D /* CustomButtonForLoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonForLoginPage.swift; sourceTree = "<group>"; };
 		BD1BF79E28316B0E0097999D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD1BF7B628316DD60097999D /* -Brata-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-Brata-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BD1BF7B728317F7A0097999D /* VerifyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCode.swift; sourceTree = "<group>"; };
@@ -48,6 +48,8 @@
 		BD5BBF6F282FF2E90070A789 /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
 		BD5BBF712830D2E20070A789 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BDAB057728326A5C00C45266 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BDAB05792832AC6C00C45266 /* TitleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleStyle.swift; sourceTree = "<group>"; };
+		BDAB057B2832B04000C45266 /* NextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,6 @@
 		BD5BBF4B282FBDEF0070A789 = {
 			isa = PBXGroup;
 			children = (
-				BD1BF79E28316B0E0097999D /* GoogleService-Info.plist */,
 				BD5BBF56282FBDEF0070A789 /* 3Brata */,
 				BD5BBF55282FBDEF0070A789 /* Products */,
 			);
@@ -91,12 +92,12 @@
 		BD5BBF56282FBDEF0070A789 /* 3Brata */ = {
 			isa = PBXGroup;
 			children = (
+				BD1BF79E28316B0E0097999D /* GoogleService-Info.plist */,
 				BD1BF7B628316DD60097999D /* -Brata-Info.plist */,
 				BD5BBF66282FBE2E0070A789 /* View */,
 				BD5BBF67282FBE3E0070A789 /* ViewModel */,
 				BD5BBF65282FBE210070A789 /* Model */,
 				BD5BBF57282FBDEF0070A789 /* _BrataApp.swift */,
-				BD5BBF59282FBDEF0070A789 /* ContentView.swift */,
 				BD5BBF68282FBE540070A789 /* Resurces */,
 				BD5BBF5D282FBDF00070A789 /* Preview Content */,
 			);
@@ -121,13 +122,15 @@
 		BD5BBF66282FBE2E0070A789 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BD5BBF59282FBDEF0070A789 /* ContentView.swift */,
 				BD5BBF69282FC19C0070A789 /* OnBoardingPage.swift */,
 				BD5BBF6D282FF03B0070A789 /* LoginPage.swift */,
 				BD1BF7B728317F7A0097999D /* VerifyCode.swift */,
 				BDAB057728326A5C00C45266 /* MainView.swift */,
 				BD5BBF6F282FF2E90070A789 /* CustomCorners.swift */,
-				BD1BF79C28310EF30097999D /* CustomButtonForLoginPage.swift */,
 				BD5BBF712830D2E20070A789 /* CustomTextField.swift */,
+				BDAB05792832AC6C00C45266 /* TitleStyle.swift */,
+				BDAB057B2832B04000C45266 /* NextButtonStyle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,14 +237,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDAB057C2832B04000C45266 /* NextButtonStyle.swift in Sources */,
 				BD5BBF722830D2E20070A789 /* CustomTextField.swift in Sources */,
 				BD5BBF5A282FBDEF0070A789 /* ContentView.swift in Sources */,
 				BD5BBF70282FF2E90070A789 /* CustomCorners.swift in Sources */,
 				BDAB057828326A5C00C45266 /* MainView.swift in Sources */,
 				BD1BF7B828317F7A0097999D /* VerifyCode.swift in Sources */,
+				BDAB057A2832AC6C00C45266 /* TitleStyle.swift in Sources */,
 				BD5BBF6A282FC19C0070A789 /* OnBoardingPage.swift in Sources */,
 				BD5BBF6C282FF0210070A789 /* LoginPageModel.swift in Sources */,
-				BD1BF79D28310EF30097999D /* CustomButtonForLoginPage.swift in Sources */,
 				BD5BBF6E282FF03B0070A789 /* LoginPage.swift in Sources */,
 				BD5BBF58282FBDEF0070A789 /* _BrataApp.swift in Sources */,
 			);
