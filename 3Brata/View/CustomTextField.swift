@@ -11,8 +11,7 @@ func CustomTextField(
     icon: String,
     title: String,
     hint: String,
-    value: Binding<String>,
-    showPassword: Binding<Bool>
+    value: Binding<String>
 ) -> some View {
     VStack(alignment: .leading, spacing: 12) {
         Label {
@@ -23,7 +22,7 @@ func CustomTextField(
         }
         .foregroundColor(Color.black.opacity(0.8))
         
-        if title.contains("Password") && !showPassword.wrappedValue {
+        if title.contains("Password") {
             SecureField(hint, text: value)
         }
         else {
@@ -32,20 +31,5 @@ func CustomTextField(
         
         Divider()
     }
-    .overlay(
-        Group {
-            if title.contains("Password") {
-                Button(action: {
-                    showPassword.wrappedValue.toggle()
-                }, label: {
-                    Text(showPassword.wrappedValue ? "Hide" : "Show")
-                        .font(.system(size: 13)).bold()
-                        .foregroundColor(.purple)
-                })
-                    .offset(y: 8)
-            }
-        }
-        ,alignment: .trailing
-    )
 }
 

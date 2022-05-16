@@ -11,6 +11,11 @@ import Firebase
 struct LoginPage: View {
     @StateObject var loginData = LoginPageModel()
     @State private var showVerify = false
+    
+    @State private var messageError = ""
+    @State private var showAlert = false
+    @State private var id = ""
+    
     var body: some View {
         
         NavigationView {
@@ -29,14 +34,19 @@ struct LoginPage: View {
                             icon: "phone",
                             title: "Enter phone number",
                             hint: "+7900123456",
-                            value: $loginData.email,
-                            showPassword: $loginData.showPassword)
+                            value: $loginData.email)
                             .padding(.top, 30)
                         
-                        NavigationLink(destination: VerifyCode(showVerify: $showVerify), isActive: $showVerify) {
+                        NavigationLink(destination: VerifyCode(showVerify: $showVerify, id: $id), isActive: $showVerify) {
                             Button {
                                 showVerify.toggle()
-                                PhoneAuthProvider.provider().verifyPhoneNumber("+"+loginData.email, uiDelegate: nil) { (id, err) in
+                                PhoneAuthProvider.provider().verifyPhoneNumber("+"+loginData.email, uiDelegate: nil) { (id, error) in
+                                    if error != nil {
+                                        messageError = error!.localizedDescription
+                                        showAlert.toggle()
+                                        return
+                                    }
+                                    self.id = id ?? ""
                                     
                                 }
                             } label: {

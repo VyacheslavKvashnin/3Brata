@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct VerifyCode: View {
     @StateObject var loginData = LoginPageModel()
     @Binding var showVerify: Bool
+    @Binding var id: String
+    
+    @State private var code = ""
+    @State private var messageError = ""
+    @State private var showAlert = false
+    
     var body: some View {
         VStack {
             Text("Enter Code")
@@ -26,16 +33,22 @@ struct VerifyCode: View {
                         icon: "phone",
                         title: "Enter code",
                         hint: "Enter code",
-                        value: $loginData.email,
-                        showPassword: $loginData.showPassword)
+                        value: $loginData.email)
                         .padding(.top, 30)
                     
                     Button {
-                        if loginData.registerUser {
-                            loginData.register()
-                        } else {
-                            loginData.login()
+                        let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
+                        
+                        Auth.auth().signIn(with: credential) { response, error in
+                            if error != nil {
+                                messageError = error!.localizedDescription
+                                showAlert.toggle()
+                                return
+                            }
+                            UserDefaults.standard.set(true, forKey: "status")
+                            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
                         }
+                       
                     } label: {
                         Text("Next")
                             .font(.system(size: 17)).bold()
@@ -65,6 +78,6 @@ struct VerifyCode: View {
 
 struct VerifyCode_Previews: PreviewProvider {
     static var previews: some View {
-        VerifyCode(showVerify: .constant(.random()))
+        VerifyCode(showVerify: .constant(.random()), id: .constant(""))
     }
 }
