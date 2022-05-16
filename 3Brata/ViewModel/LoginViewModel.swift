@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-class LoginPageModel: ObservableObject {
-    @Published var email = ""
+class LoginViewModel: ObservableObject {
+    @Published var numberPhone = ""
     @Published var isEnabledButton = false
+    @Published var showAlert: Bool = false
 }

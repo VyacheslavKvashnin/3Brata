@@ -11,15 +11,18 @@ struct NextButtonStyle: ViewModifier {
     let isEnabledButton: Bool
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 17).weight(.bold))
+            .font(.system(size: 20).weight(.bold))
             .padding(.vertical, 20)
             .frame(maxWidth: .infinity)
-            .foregroundColor(isEnabledButton ? .gray : .white)
+            .foregroundColor(isEnabledButton ? .purple : .white)
             .background(.purple)
             .cornerRadius(15)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 5, y: 5)
             .overlay(
-                isEnabledButton ? ProgressView() : nil
+                isEnabledButton
+                ? ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.white))
+                : nil
             )
     }
 }

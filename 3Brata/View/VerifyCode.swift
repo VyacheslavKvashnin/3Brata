@@ -9,8 +9,7 @@ import SwiftUI
 import Firebase
 
 struct VerifyCode: View {
-    @StateObject var loginData = LoginPageModel()
-    @Binding var showVerify: Bool
+    @StateObject var loginData = LoginViewModel()
     @Binding var ID: String
     
     @State private var code = ""
@@ -22,37 +21,46 @@ struct VerifyCode: View {
             Text("Enter Code")
                 .titleStyle()
             
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 15) {
-                    CustomTextField(icon: "barcode", title: "Enter code", hint: "Enter code", value: $code)
+            VStack(spacing: 15) {
+                CustomTextField(
+                    icon: "barcode",
+                    title: "Enter code",
+                    hint: "Enter code",
+                    value: $code
+                )
+                    .padding(.top, 30)
+                
+                Spacer()
+                
+                Button {
+                    loginData.isEnabledButton = true
+                    let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID, verificationCode: code)
                     
-                    Button {
-                        loginData.isEnabledButton = true
-                        let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID, verificationCode: code)
-                        
-                        Auth.auth().signIn(with: credential) { response, error in
-                            if error != nil {
-                                messageError = error!.localizedDescription
-                                showAlert.toggle()
-                                return
-                            }
-                            UserDefaults.standard.set(true, forKey: "status")
-                            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+                    Auth.auth().signIn(with: credential) { response, error in
+                        if error != nil {
+                            messageError = error!.localizedDescription
+                            showAlert.toggle()
+                            return
                         }
-                    } label: {
-                        Text("Next")
-                            .nextButtonStyle(isEnabledButton: loginData.isEnabledButton)
-                            
+                        UserDefaults.standard.set(true, forKey: "status")
+                        NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
                     }
-                    .padding(.top, 20)
-                    .padding(.horizontal)
+                } label: {
+                    Text("Next")
+                        .nextButtonStyle(isEnabledButton: loginData.isEnabledButton)
                 }
-                .padding()
-                .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Error"), message: Text(messageError), dismissButton: .default(Text("OK")))
+                .padding(.horizontal)
+                
+                Spacer()
+            }
+            .padding()
+            .alert("Error", isPresented: $showAlert) {
+                Button {
+                    loginData.isEnabledButton.toggle()
+                } label: {
+                    Text("OK")
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 Color.white
                     .clipShape(CustomCorners(corners: [.topLeft, .topRight], radius: 25))
@@ -66,6 +74,6 @@ struct VerifyCode: View {
 
 struct VerifyCode_Previews: PreviewProvider {
     static var previews: some View {
-        VerifyCode(showVerify: .constant(.random()), ID: .constant(""))
+        VerifyCode(ID: .constant(""))
     }
 }

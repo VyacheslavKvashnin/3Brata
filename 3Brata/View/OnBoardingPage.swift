@@ -30,18 +30,15 @@ struct OnBoardingPage: View {
                 }
             } label: {
                 Text("Get Started")
-                    .font(.body)
-                    .padding(.vertical, 15)
-                    .frame(maxWidth: .infinity)
-                    .background(.white)
-                    .cornerRadius(10)
+                    .nextButtonStyle(isEnabledButton: false)
+                    
             }
             .padding(.horizontal, 30)
             
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.purple)
+        .background(.white)
         .overlay(
             Group {
                 if showLoginPage {
