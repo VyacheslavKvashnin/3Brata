@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-struct User {
-    let userName = ""
-    let numberPhone = ""
-    let email = ""
-    let birthday: Date = Date()
-}
-
 class LoginViewModel: ObservableObject {
     @Published var numberPhone = ""
     @Published var isEnabledButton = false

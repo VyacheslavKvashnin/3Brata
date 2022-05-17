@@ -9,25 +9,25 @@ import SwiftUI
 import Firebase
 
 struct ProfileView: View {
-    @State private var name = ""
+    @State private var userName = ""
+    @State private var phoneNumber = ""
+    @State private var email = ""
+    @State private var birthday = ""
     
     var body: some View {
         NavigationView {
-            VStack {
-                Divider()
-                Text("Name")
-                TextField("Enter Name", text: $name)
-                Divider()
-                
-                
-                Spacer()
-            }
-            
-                
-            
-            
-            
-            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    Divider()
+                    
+                    CustomTextFieldProfile(userName: "Name", placeholder: "Enter name", value: $userName)
+                    CustomTextFieldProfile(userName: "Phone number", placeholder: "Enter phone number", value: $phoneNumber)
+                    CustomTextFieldProfile(userName: "Email", placeholder: "Enter email", value: $email)
+                    CustomTextFieldProfile(userName: "Birthday", placeholder: "birthday", value: $birthday)
+                    
+                    Spacer()
+                }
+                .padding()
                 .navigationTitle("Profile")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -40,6 +40,7 @@ struct ProfileView: View {
                         }
                     }
                 }
+            }
         }
     }
 }

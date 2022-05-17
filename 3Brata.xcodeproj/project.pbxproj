@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD13B6642834065900A4E4D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD13B6632834065900A4E4D5 /* User.swift */; };
+		BD13B6672834084900A4E4D5 /* CustomTextFieldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD13B6662834084900A4E4D5 /* CustomTextFieldProfile.swift */; };
 		BD1BF79F28316B0E0097999D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD1BF79E28316B0E0097999D /* GoogleService-Info.plist */; };
 		BD1BF7A328316D530097999D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD1BF7A228316D530097999D /* FirebaseAuth */; };
 		BD1BF7A528316D530097999D /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BD1BF7A428316D530097999D /* FirebaseAuthCombine-Community */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD13B6632834065900A4E4D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BD13B6662834084900A4E4D5 /* CustomTextFieldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldProfile.swift; sourceTree = "<group>"; };
 		BD1BF79E28316B0E0097999D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD1BF7B628316DD60097999D /* -Brata-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-Brata-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BD1BF7B728317F7A0097999D /* VerifyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCode.swift; sourceTree = "<group>"; };
@@ -79,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD13B6652834082700A4E4D5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BDAB057E2832D89300C45266 /* ProfileView.swift */,
+				BD13B6662834084900A4E4D5 /* CustomTextFieldProfile.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BD13B668283412AD00A4E4D5 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				BDAB05802832D8AB00C45266 /* ContactsView.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
 		BD5BBF4B282FBDEF0070A789 = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +151,8 @@
 			children = (
 				BD5BBF59282FBDEF0070A789 /* ContentView.swift */,
 				BDAB057728326A5C00C45266 /* MainView.swift */,
-				BDAB057E2832D89300C45266 /* ProfileView.swift */,
-				BDAB05802832D8AB00C45266 /* ContactsView.swift */,
+				BD13B6652834082700A4E4D5 /* Profile */,
+				BD13B668283412AD00A4E4D5 /* Contacts */,
 				BDAB05822832D8D300C45266 /* CartView.swift */,
 				BDAB057D2832D85100C45266 /* Login */,
 			);
@@ -142,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				BD5BBF6B282FF0210070A789 /* LoginViewModel.swift */,
+				BD13B6632834065900A4E4D5 /* User.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -262,9 +284,11 @@
 				BDAB057F2832D89400C45266 /* ProfileView.swift in Sources */,
 				BDAB057828326A5C00C45266 /* MainView.swift in Sources */,
 				BD1BF7B828317F7A0097999D /* VerifyCode.swift in Sources */,
+				BD13B6642834065900A4E4D5 /* User.swift in Sources */,
 				BDAB057A2832AC6C00C45266 /* TitleStyle.swift in Sources */,
 				BDAB05812832D8AB00C45266 /* ContactsView.swift in Sources */,
 				BD5BBF6A282FC19C0070A789 /* OnBoardingPage.swift in Sources */,
+				BD13B6672834084900A4E4D5 /* CustomTextFieldProfile.swift in Sources */,
 				BD5BBF6C282FF0210070A789 /* LoginViewModel.swift in Sources */,
 				BD5BBF6E282FF03B0070A789 /* LoginPage.swift in Sources */,
 				BD5BBF58282FBDEF0070A789 /* _BrataApp.swift in Sources */,
