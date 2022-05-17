@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
     @Published var numberPhone = ""
@@ -16,7 +16,6 @@ class LoginViewModel: ObservableObject {
     @Published var messageError = ""
     
     @Published var isEnabledButton = false
-    
     @Published var showVerify = false
     @Published var showAlert = false
     
@@ -35,7 +34,6 @@ class LoginViewModel: ObservableObject {
     
     func loginWithCode() {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID, verificationCode: code)
-        
         Auth.auth().signIn(with: credential) { response, error in
             if error != nil {
                 self.messageError = error!.localizedDescription
@@ -45,5 +43,11 @@ class LoginViewModel: ObservableObject {
             UserDefaults.standard.set(true, forKey: "status")
             NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
         }
+    }
+    
+    func loginOut() {
+        try! Auth.auth().signOut()
+        UserDefaults.standard.set(false, forKey: "status")
+        NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
     }
 }

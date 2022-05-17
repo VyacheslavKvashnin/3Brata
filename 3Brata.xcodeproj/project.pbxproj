@@ -100,6 +100,14 @@
 			path = Contacts;
 			sourceTree = "<group>";
 		};
+		BD13B66928342D3E00A4E4D5 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				BDAB05822832D8D300C45266 /* CartView.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		BD5BBF4B282FBDEF0070A789 = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +161,7 @@
 				BDAB057728326A5C00C45266 /* MainView.swift */,
 				BD13B6652834082700A4E4D5 /* Profile */,
 				BD13B668283412AD00A4E4D5 /* Contacts */,
-				BDAB05822832D8D300C45266 /* CartView.swift */,
+				BD13B66928342D3E00A4E4D5 /* Cart */,
 				BDAB057D2832D85100C45266 /* Login */,
 			);
 			path = View;

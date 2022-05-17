@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct ProfileView: View {
+    @ObservedObject var loginViewModel = LoginViewModel()
+    
     @State private var userName = ""
     @State private var phoneNumber = ""
     @State private var email = ""
     @State private var birthday = ""
+    
+    @State private var showCancelExit = false
     
     var body: some View {
         NavigationView {
@@ -32,11 +35,16 @@ struct ProfileView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            try! Auth.auth().signOut()
-                            UserDefaults.standard.set(false, forKey: "status")
-                            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+                            showCancelExit.toggle()
                         } label: {
                             Image(systemName: "rectangle.lefthalf.inset.filled.arrow.left")
+                        }
+                        .confirmationDialog("Вы действительно хотете выйти?", isPresented: $showCancelExit) {
+                            Button {
+                                loginViewModel.loginOut()
+                            } label: {
+                                Text("Выйти")
+                            }
                         }
                     }
                 }
