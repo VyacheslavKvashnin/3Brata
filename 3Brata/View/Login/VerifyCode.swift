@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct VerifyCode: View {
-    @StateObject var loginData = LoginViewModel()
+    @StateObject var loginViewModel = LoginViewModel()
     @Binding var ID: String
     
     @State private var code = ""
@@ -33,9 +33,9 @@ struct VerifyCode: View {
                 Spacer()
                 
                 Button {
-                    loginData.isEnabledButton = true
+                    loginViewModel.isEnabledButton = true
                     let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID, verificationCode: code)
-                    
+
                     Auth.auth().signIn(with: credential) { response, error in
                         if error != nil {
                             messageError = error!.localizedDescription
@@ -45,9 +45,10 @@ struct VerifyCode: View {
                         UserDefaults.standard.set(true, forKey: "status")
                         NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
                     }
+//                    loginViewModel.loginWithCode()
                 } label: {
                     Text("Next")
-                        .nextButtonStyle(isEnabledButton: loginData.isEnabledButton)
+                        .nextButtonStyle(isEnabledButton: loginViewModel.isEnabledButton)
                 }
                 .padding(.horizontal)
                 
@@ -56,7 +57,7 @@ struct VerifyCode: View {
             .padding()
             .alert("Error", isPresented: $showAlert) {
                 Button {
-                    loginData.isEnabledButton.toggle()
+                    loginViewModel.isEnabledButton.toggle()
                 } label: {
                     Text("OK")
                 }

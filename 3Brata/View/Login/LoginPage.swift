@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct LoginPage: View {
-    @StateObject var loginData = LoginViewModel()
+    @StateObject var loginViewModel = LoginViewModel()
     @State private var showVerify = false
     
     @State private var messageError = ""
@@ -27,35 +27,26 @@ struct LoginPage: View {
                         icon: "phone",
                         title: "Phone number",
                         hint: "Enter phone number",
-                        value: $loginData.numberPhone
+                        value: $loginViewModel.numberPhone
                     )
                         .padding(.top, 30)
                     
                     Spacer()
                     
-                    NavigationLink(destination: VerifyCode(ID: $ID), isActive: $showVerify) {
+                    NavigationLink(destination: VerifyCode(ID: $loginViewModel.ID), isActive: $loginViewModel.showVerify) {
                         Button {
-                            loginData.isEnabledButton = true
-                            PhoneAuthProvider.provider().verifyPhoneNumber("+"+loginData.numberPhone, uiDelegate: nil) { (id, error) in
-                                if error != nil {
-                                    messageError = error!.localizedDescription
-                                    showAlert.toggle()
-                                    return
-                                }
-                                self.ID = id ?? ""
-                                showVerify.toggle()
-                                loginData.isEnabledButton.toggle()
-                            }
+                            loginViewModel.isEnabledButton = true
+                            loginViewModel.verifyUser()
                         } label: {
                             Text("Next")
-                                .nextButtonStyle(isEnabledButton: loginData.isEnabledButton)
+                                .nextButtonStyle(isEnabledButton: loginViewModel.isEnabledButton)
                         }
                         .padding(.horizontal)
                     }
-                    .disabled(loginData.isEnabledButton ? true : false)
+                    .disabled(loginViewModel.isEnabledButton ? true : false)
                     .alert("Error", isPresented: $showAlert) {
                         Button {
-                            loginData.isEnabledButton.toggle()
+                            loginViewModel.isEnabledButton.toggle()
                         } label: {
                             Text("OK")
                         }
