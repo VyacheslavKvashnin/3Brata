@@ -10,13 +10,15 @@ import Firebase
 
 class LoginViewModel: ObservableObject {
     @Published var numberPhone = ""
-    @Published var isEnabledButton = false
-    @Published var showAlert = false
+    @Published var code = ""
+    @Published var ID = ""
     
     @Published var messageError = ""
-    @Published var ID = ""
-    @Published var code = ""
+    
+    @Published var isEnabledButton = false
+    
     @Published var showVerify = false
+    @Published var showAlert = false
     
     func verifyUser() {
         PhoneAuthProvider.provider().verifyPhoneNumber("+"+numberPhone, uiDelegate: nil) { (id, error) in

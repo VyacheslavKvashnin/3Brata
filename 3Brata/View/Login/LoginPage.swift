@@ -6,15 +6,9 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct LoginPage: View {
-    @StateObject var loginViewModel = LoginViewModel()
-    @State private var showVerify = false
-    
-    @State private var messageError = ""
-    @State private var showAlert = false
-    @State private var ID = ""
+    @ObservedObject var loginViewModel = LoginViewModel()
     
     var body: some View {
         NavigationView {
@@ -33,7 +27,7 @@ struct LoginPage: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: VerifyCode(ID: $loginViewModel.ID), isActive: $loginViewModel.showVerify) {
+                    NavigationLink(destination: VerifyCode(loginViewModel: loginViewModel), isActive: $loginViewModel.showVerify) {
                         Button {
                             loginViewModel.isEnabledButton = true
                             loginViewModel.verifyUser()
@@ -44,14 +38,14 @@ struct LoginPage: View {
                         .padding(.horizontal)
                     }
                     .disabled(loginViewModel.isEnabledButton ? true : false)
-                    .alert("Error", isPresented: $showAlert) {
+                    .alert("Error", isPresented: $loginViewModel.showAlert) {
                         Button {
                             loginViewModel.isEnabledButton.toggle()
                         } label: {
                             Text("OK")
                         }
                     }
-                 
+                    
                     Spacer()
                 }
                 .padding()

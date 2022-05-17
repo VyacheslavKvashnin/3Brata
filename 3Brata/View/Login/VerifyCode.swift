@@ -6,15 +6,9 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct VerifyCode: View {
-    @StateObject var loginViewModel = LoginViewModel()
-    @Binding var ID: String
-    
-    @State private var code = ""
-    @State private var messageError = ""
-    @State private var showAlert = false
+    @ObservedObject var loginViewModel: LoginViewModel
     
     var body: some View {
         VStack {
@@ -26,7 +20,7 @@ struct VerifyCode: View {
                     icon: "barcode",
                     title: "Enter code",
                     hint: "Enter code",
-                    value: $code
+                    value: $loginViewModel.code
                 )
                     .padding(.top, 30)
                 
@@ -34,18 +28,7 @@ struct VerifyCode: View {
                 
                 Button {
                     loginViewModel.isEnabledButton = true
-                    let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID, verificationCode: code)
-
-                    Auth.auth().signIn(with: credential) { response, error in
-                        if error != nil {
-                            messageError = error!.localizedDescription
-                            showAlert.toggle()
-                            return
-                        }
-                        UserDefaults.standard.set(true, forKey: "status")
-                        NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
-                    }
-//                    loginViewModel.loginWithCode()
+                    loginViewModel.loginWithCode()
                 } label: {
                     Text("Next")
                         .nextButtonStyle(isEnabledButton: loginViewModel.isEnabledButton)
@@ -55,7 +38,7 @@ struct VerifyCode: View {
                 Spacer()
             }
             .padding()
-            .alert("Error", isPresented: $showAlert) {
+            .alert("Error", isPresented: $loginViewModel.showAlert) {
                 Button {
                     loginViewModel.isEnabledButton.toggle()
                 } label: {
@@ -75,6 +58,6 @@ struct VerifyCode: View {
 
 struct VerifyCode_Previews: PreviewProvider {
     static var previews: some View {
-        VerifyCode(ID: .constant(""))
+        VerifyCode(loginViewModel: LoginViewModel())
     }
 }
