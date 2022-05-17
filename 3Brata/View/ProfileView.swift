@@ -9,9 +9,25 @@ import SwiftUI
 import Firebase
 
 struct ProfileView: View {
+    @State private var name = ""
+    
     var body: some View {
         NavigationView {
-            Text("Profile")
+            VStack {
+                Divider()
+                Text("Name")
+                TextField("Enter Name", text: $name)
+                Divider()
+                
+                
+                Spacer()
+            }
+            
+                
+            
+            
+            
+            
                 .navigationTitle("Profile")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
