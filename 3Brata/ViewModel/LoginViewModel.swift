@@ -19,7 +19,7 @@ class LoginViewModel: ObservableObject {
     @Published var showVerify = false
     @Published var showAlert = false
     
-    func verifyUser() {
+    func verifyNumberPhone() {
         PhoneAuthProvider.provider().verifyPhoneNumber("+"+numberPhone, uiDelegate: nil) { (id, error) in
             if error != nil {
                 self.messageError = error!.localizedDescription

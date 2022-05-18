@@ -30,7 +30,7 @@ struct LoginPage: View {
                     NavigationLink(destination: VerifyCode(loginViewModel: loginViewModel), isActive: $loginViewModel.showVerify) {
                         Button {
                             loginViewModel.isEnabledButton = true
-                            loginViewModel.verifyUser()
+                            loginViewModel.verifyNumberPhone()
                         } label: {
                             Text("Next")
                                 .nextButtonStyle(isEnabledButton: loginViewModel.isEnabledButton)
