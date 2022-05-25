@@ -9,7 +9,21 @@ import SwiftUI
 
 struct CartView: View {
     var body: some View {
-        Text("Card")
+        NavigationView {
+            VStack {
+                Text("Ваша корзина пуста")
+                    .font(.largeTitle).bold()
+                Button {
+                    
+                } label: {
+                    Text("Перейти в меню")
+                        .nextButtonStyle(isEnabledButton: false)
+                }
+                .padding()
+            }
+            .navigationTitle("Корзина")
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 
